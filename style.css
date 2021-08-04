@@ -1,0 +1,145 @@
+* {
+    font-family: 'Atkinson Hyperlegible', sans-serif;
+}
+
+body {
+    background-color: #222;
+}
+
+#top {
+    position: relative;
+    top: -350em;
+}
+
+header {
+    width: 100%;
+    height: 4rem;
+    background-color: #eee;
+    position: fixed;
+    top: 0;
+    display: flex;
+    justify-content: space-around;
+    box-shadow: 0px 0px 10px #000a;
+}
+
+header p {
+    font-size: 1.25em;
+    align-self: center;
+}
+
+.menu button {
+    border: none;
+}
+
+#arrow-icon {
+    position: relative;
+    top: .35em;
+    height: fit-content;
+    cursor: pointer;
+    font-size: 36px;
+    transition-property: transform;
+    transition-duration: .45s;
+}
+
+.arrow-down {
+    transform: rotate(180deg);
+}
+
+.menu-links {
+    /* Sizing and positioning the links*/
+    width: 100vw;
+    display: none;
+    position: absolute;
+    top: 4em;
+    left: 0;
+
+    /* Styling */
+    padding-inline-start: 0;
+    background-color: #ddd;
+    list-style-type: none;
+}
+
+.menu-links a {
+    text-decoration: none;
+    scroll-behavior: smooth;
+}
+
+.menu-link {
+    padding: .35em;
+    font-size: 1.05em;
+    transition-property: background-color;
+    transition-duration: .15s;
+    color: #000;
+}
+
+.menu-link:hover {
+    background-color: #ccc;
+}
+
+.link-icon {
+    position: relative;
+    padding: .35em;
+    top: .25em;
+}
+
+
+main {
+    margin-top: 5em;
+}
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    padding: 1.25em;
+}
+
+.calculator-section {
+    background-color: #eee;
+    margin-bottom: 3em;
+    padding: 2em;
+    border-radius: .65em;
+}
+
+.calculator-section p {
+    padding-bottom: .5em;
+}
+
+#total__p {
+    font-size: 1.35em;
+    font-weight: bold;
+    margin-bottom: .95em;
+    text-align: center;
+}
+
+.script {
+    font-style: normal;
+    font-weight: bold;
+}
+
+.script-button {
+    padding: .35em;
+    margin-top: .55em;
+    border: 1px solid #aaa;
+    border-radius: 1em;
+}
+
+#about {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    background-color: #ddd;
+    padding: .75em;
+    text-align: center;
+}
+
+#summary h1 {
+    font-size: 28px;
+    font-weight: normal;
+}
+
+#summary p {
+    font-family: 'Lato', sans-serif;
+}

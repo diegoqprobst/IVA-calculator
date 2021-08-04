@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Calculadora de IVA</title>
+        <meta name="description" content="Calcular el IVA de un total o de un producto.">
+        <meta name="keywords" content="IVA, finanzas, calculadora iva, calcular iva, impuesto al valor agregado">
+        <meta name="robots" content="index, follow">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style id="font-import">@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Lato&display=swap');</style>
+        <style id="normalize">*{margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type="button"],[type="reset"],[type="submit"],button{-webkit-appearance:button}[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}</style>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+        <!-- <style></style> -->
+        <script src="app.js"></script>
+    </head>
+    <body>
+        <span id="top"></span>
+        <header>
+            <p>Calculadora de IVA</p>
+            <div class="menu">
+                <button type="button" onclick="showMenu()" name="show-menu"><span id="arrow-icon" class="material-icons arrow-down">expand_more</span></button>
+                <ul class="menu-links" id="menu-ul">
+                    <a href="#top"><li class="menu-link"><span class="material-icons link-icon">home</span>Inicio</li></a>
+                    <a href="#about"><li class="menu-link"><span class="material-icons link-icon">info</span>Acerca de</li></a>
+                    <a href="#credits"><li class="menu-link"><span class="material-icons link-icon">engineering</span>Créditos</li></a>
+                </ul>
+                <script>
+                    const menu = document.getElementById('menu-ul');
+                    const arrow = document.getElementById('arrow-icon');
+
+                    function showMenu() {
+                        if (menu.style.display == 'grid' && arrow.className == 'arrow-down') {
+                            arrow.classList.remove('arrow-down');
+                            menu.style.display = 'none';
+                        } else if (menu.style.display == 'grid' && arrow.className != 'arrow-down') {
+                            arrow.classList.add('arrow-down');
+                            menu.style.display = 'none';
+                        } else {
+                            menu.style.display = 'grid';
+                            arrow.classList.remove('arrow-down');
+                        }
+                    }
+                </script>
+            </div>
+        </header>
+        <main>
+            <div class="calculator">
+                <div id="total" class="calculator-section">
+                    <p id="total__p">Obtener el valor del IVA sobre un total</p>
+                    <p>Sobre un total facturado de: <i class="script" id="total-script1"></i></p>
+                    <p>La base imponible es de: <i class="script" id="total-script2"></i></p>
+                    <p>El valor del IVA es: <i class="script" id="total-script3"></i></p>
+                    <button class="script-button" onclick="showResults('total')">Tocá para insertar el Total Facturado</button>
+                </div>
+                <div id="product" class="calculator-section">
+                    <p id="total__p">Obtener el valor del IVA sobre un producto</p>
+                    <p>Sobre un producto costeado en: <i class="script" id="product-script1"></i></p>
+                    <p>La base imponible es de: <i class="script" id="product-script2"></i></p>
+                    <p>El valor del IVA es: <i class="script" id="product-script3"></i></p>
+                    <button class="script-button" onclick="showResults('product')">Tocá para insertar el valor del producto</button>
+                </div>
+                <div id="get-iva" class="calculator-section">
+                    <p id="total__p">Calcular el valor de IVA para un producto o subtotal</p>
+                    <p>Para un valor de: <i class="script" id="calculation1"></i></p>
+                    <p>Se establece un valor de IVA de: <i class="script" id="calculation2"></i></p>
+                    <button class="script-button" onclick="calculateIVA()">Tocá para insertar el valor del producto o total</button>
+                    <script>
+                        const calculationElements = [document.getElementById('calculation1'), document.getElementById('calculation2')];
+                        function calculateIVA() {
+                            let total = prompt('Inserta el valor del producto o el total: ');
+                            if (total > 0 && total != null) {
+                                let valueOfIVA = Math.round((parseInt(total) * 1.21) - total);
+                                calculationElements[0].innerText = `${parseInt(total)}`;
+                                calculationElements[1].innerText = `${valueOfIVA}`;
+                            }
+                        };
+                    </script>
+                </div>
+            </div>
+            <script>
+                const totalElements = [document.getElementById('total-script1'), document.getElementById('total-script2'), document.getElementById('total-script3')];
+                const productElements = [document.getElementById('product-script1'), document.getElementById('product-script2'), document.getElementById('product-script3')];
+
+                const getTaxableAmount = (amount) => Math.round(parseInt(amount) / 1.21);
+
+                function getIVA(amount) {
+                    let total = amount;
+                    let taxableAmount = getTaxableAmount(total);
+                    let valueOfIVA = total - taxableAmount;
+                    return valueOfIVA;
+                };
+
+                function showResults(type) {
+                    let total;
+                    let product;
+                    if (type == 'total') {
+                        total = prompt('¿Cuál es el total facturado?');
+                        if (total > 0 && total != null) {
+                            let taxableAmountOfTotal = getTaxableAmount(total);
+                            let valueOfIVAOfTotal = getIVA(total);
+                            totalElements[0].innerText = `$${parseInt(total)}`;
+                            totalElements[1].innerText = `$${taxableAmountOfTotal}`;
+                            totalElements[2].innerText = `$${valueOfIVAOfTotal}`;
+                        }
+                    } else if (type == 'product') {
+                        product = prompt('¿Cuál es el total facturado?');
+                        if (product > 0 && product != null) {
+                            let taxableAmountOfProduct = getTaxableAmount(product);
+                            let valueOfIVAOfProduct = getIVA(product);
+                            productElements[0].innerText = `$${parseInt(product)}`;
+                            productElements[1].innerText = `$${taxableAmountOfProduct}`;
+                            productElements[2].innerText = `$${valueOfIVAOfProduct}`;
+                    }
+                }
+            }
+            </script>
+            <div id="about">
+                <div id="summary">
+                    <h1>Calculadora de IVA</h1>
+                    <p>Esta calculadora tiene el fin de agilizar y ayudar a conocer los valores del IVA en un total facturado o en un producto cuyo valor del IVA está incluido en el precio.</p>
+                </div>
+            </div>
+            <div class="credits"></div>
+        </main>
+    </body>
+</html>
