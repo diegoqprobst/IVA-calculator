@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
+        <!-- Meta TAGS -->
         <meta charset="utf-8">
         <title>Calculadora de IVA</title>
         <meta name="description" content="Calcular el IVA de un total o de un producto.">
         <meta name="keywords" content="IVA, finanzas, calculadora iva, calcular iva, impuesto al valor agregado">
         <meta name="robots" content="index, follow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <!-- Styles and fonts -->
         <style id="font-import">@import url('https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible&family=Lato&display=swap');</style>
         <style id="normalize">*{margin:0;padding:0}html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:0.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace, monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace, monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-0.25em}sup{top:-0.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type="button"],[type="reset"],[type="submit"],button{-webkit-appearance:button}[type="button"]::-moz-focus-inner,[type="reset"]::-moz-focus-inner,[type="submit"]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type="button"]:-moz-focusring,[type="reset"]:-moz-focusring,[type="submit"]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:0.35em 0.75em 0.625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type="checkbox"],[type="radio"]{box-sizing:border-box;padding:0}[type="number"]::-webkit-inner-spin-button,[type="number"]::-webkit-outer-spin-button{height:auto}[type="search"]{-webkit-appearance:textfield;outline-offset:-2px}[type="search"]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}</style>
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-        <!-- <style></style> -->
-        <script src="app.js"></script>
+        <style id="styles">:root{--background:#222;--white:#eee}*{font-family:'Atkinson Hyperlegible', sans-serif;scroll-behavior:smooth}body{background-color:var(--background)}#top{position:relative;top:-350em}header{width:100%;height:4rem;background-color:var(--white);position:fixed;top:0;display:flex;justify-content:space-around;box-shadow:0 0 10px #000a}header p{font-size:1.25em;align-self:center}.menu button{border:none}#arrow-icon{position:relative;top:0.35em;height:fit-content;cursor:pointer;font-size:36px;transition-property:transform;transition-duration:0.45s}.arrow-down{transform:rotate(180deg)}.menu-links{width:100vw;display:none;position:absolute;top:4em;left:0;padding-inline-start:0;background-color:#ddd;list-style-type:none}.menu-links a{text-decoration:none;scroll-behavior:smooth}.menu-link{padding:0.35em;font-size:1.05em;transition-property:background-color;transition-duration:0.15s;color:#000}.menu-link:hover{background-color:#ccc}.link-icon{position:relative;padding:0.35em;top:0.25em}main{margin-top:5em}.section-title{color:#fff;font-size:2.25em;text-align:center;margin-bottom:1em}.calculator{display:flex;flex-direction:column;justify-content:center;align-content:center;padding:1.25em}.calculator-section{display:flex;flex-direction:column;justify-content:center;background-color:var(--white);margin-bottom:3em;padding:2em;border-radius:0.65em}.calculator-section p{padding-bottom:0.5em}.calculator-title{font-size:1.35em;font-weight:bold;margin-bottom:0.95em;text-align:center}.script{font-family:'Lato', sans-serif;font-style:normal;font-weight:bold}.script-button{padding:0.35em;margin-top:0.55em;border:1px solid #aaa;border-radius:1em;transition-property:background-color;transition-duration:0.25s;cursor:pointer}.script-button:active,.script-button:hover{background-color:#bbb}#about{position:relative;top:-6.85em}#about-container{display:flex;flex-direction:column;justify-content:center;margin:auto;background-color:var(--white);padding:0.75em;text-align:center;margin-bottom:3.5em}.about-section{margin-bottom:1em}.about-section h1{font-size:1.82em;font-weight:normal}.about-section h3{font-size:1.18em;font-weight:normal;margin-bottom:0.5em}.about-section p{font-size:1em;font-family:'Lato', sans-serif}.credits{display:flex;flex-direction:column;justify-content:center;text-align:center;align-content:center;background-color:#ddd;padding:1em;width:80vw;margin:0 auto 3em;border-radius:1em}#credits-name{font-size:1.5em;padding:0.45em}#socials-title{font-size:1.15em;padding-bottom:0.85em}#ti7oyan-logo{width:120px;object-fit:contain;border-radius:50%}#socials-table{display:inline-flex;justify-content:space-around;width:80%}.socials-link{list-style-type:none}.socials-image{width:3em;filter: opacity(50%);transition-property:filter;transition-duration:0.25s}.socials-image:hover{filter: opacity(100%)}@media only screen and (min-width: 375px){#about-container{margin-bottom:4.5em}}@media only screen and (min-width: 425px){#about-container{margin-bottom:5.65em}}@media only screen and (min-width: 768px){header p{font-size:1.65em;margin-block-end:0}.calculator-parameter{font-size:1.15em}.calculator-title{font-size:1.65em}.script-button{width:60vw;margin:0.5em auto auto;font-size:1.25em}#about-container{margin-bottom:7.25em}.about-section{width:80vw;margin:0 auto}.about-section p{font-size:1.05em}#summary h1,p{margin-bottom:0.65em}#how-to h3{font-size:1.35em;margin-bottom:0.35em}}@media only screen and (min-width: 1024px){.calculator{flex-direction:row;margin-bottom:3em}.calculator-section{width:15em;margin:1em}.calculator-title{font-size:1.5em}.script-button{width:14em;font-size:1em}.about-section{padding:1em}#how-to h3{font-size:1.55em}.credits{width:40vw}#socials-table{justify-content:space-around;width:40%}}@media only screen and (min-width: 1440px){.menu-link{font-size:1.25em}.material-icons.link-icon{font-size:28px}.script-button{width:100%;font-size:1.20em}.calculator{padding:2em;margin-bottom:5em}.calculator-section{width:20em;height:20em}#about-container{margin-bottom:5em}#summary h1{font-size:2.65em}#how-to h3{font-size:1.50em;margin-bottom:0.65em}.about-section p{font-size:1.15em}.credits{margin-bottom:5em}}</style>
+        <link id="material-icons-import" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     </head>
     <body>
         <span id="top"></span>
@@ -21,60 +22,38 @@
             <div class="menu">
                 <button type="button" onclick="showMenu()" name="show-menu"><span id="arrow-icon" class="material-icons arrow-down">expand_more</span></button>
                 <ul class="menu-links" id="menu-ul">
-                    <a href="#top"><li class="menu-link"><span class="material-icons link-icon">home</span>Inicio</li></a>
+                    <a href="#top"><li class="menu-link"><span class="material-icons link-icon md-48">home</span>Inicio</li></a>
                     <a href="#about"><li class="menu-link"><span class="material-icons link-icon">info</span>Acerca de</li></a>
                     <a href="#credits"><li class="menu-link"><span class="material-icons link-icon">engineering</span>Créditos</li></a>
                 </ul>
                 <script>
-                    const menu = document.getElementById('menu-ul');
-                    const arrow = document.getElementById('arrow-icon');
-
-                    function showMenu() {
-                        if (menu.style.display == 'grid' && arrow.className == 'arrow-down') {
-                            arrow.classList.remove('arrow-down');
-                            menu.style.display = 'none';
-                        } else if (menu.style.display == 'grid' && arrow.className != 'arrow-down') {
-                            arrow.classList.add('arrow-down');
-                            menu.style.display = 'none';
-                        } else {
-                            menu.style.display = 'grid';
-                            arrow.classList.remove('arrow-down');
-                        }
-                    }
+                    const menu=document.getElementById('menu-ul');const arrow=document.getElementById('arrow-icon');function showMenu(){if(menu.style.display=='grid'&&arrow.className=='arrow-down'){arrow.classList.remove('arrow-down');menu.style.display='none'}else if(menu.style.display=='grid'&&arrow.className!='arrow-down'){arrow.classList.add('arrow-down');menu.style.display='none'}else{menu.style.display='grid';arrow.classList.remove('arrow-down')}}
                 </script>
             </div>
         </header>
         <main>
             <div class="calculator">
                 <div id="total" class="calculator-section">
-                    <p id="total__p">Obtener el valor del IVA sobre un total</p>
-                    <p>Sobre un total facturado de: <i class="script" id="total-script1"></i></p>
-                    <p>La base imponible es de: <i class="script" id="total-script2"></i></p>
-                    <p>El valor del IVA es: <i class="script" id="total-script3"></i></p>
+                    <p class="calculator-title">Obtener el valor del IVA sobre un total</p>
+                    <p class="calculator-parameter">Sobre un total facturado de: <i class="script" id="total-script1"></i></p>
+                    <p class="calculator-parameter">La base imponible es de: <i class="script" id="total-script2"></i></p>
+                    <p class="calculator-parameter">El valor del IVA es: <i class="script" id="total-script3"></i></p>
                     <button class="script-button" onclick="showResults('total')">Tocá para insertar el Total Facturado</button>
                 </div>
                 <div id="product" class="calculator-section">
-                    <p id="total__p">Obtener el valor del IVA sobre un producto</p>
-                    <p>Sobre un producto costeado en: <i class="script" id="product-script1"></i></p>
-                    <p>La base imponible es de: <i class="script" id="product-script2"></i></p>
-                    <p>El valor del IVA es: <i class="script" id="product-script3"></i></p>
+                    <p class="calculator-title">Obtener el valor del IVA sobre un producto</p>
+                    <p class="calculator-parameter">Sobre un producto costeado en: <i class="script" id="product-script1"></i></p>
+                    <p class="calculator-parameter">La base imponible es de: <i class="script" id="product-script2"></i></p>
+                    <p class="calculator-parameter">El valor del IVA es: <i class="script" id="product-script3"></i></p>
                     <button class="script-button" onclick="showResults('product')">Tocá para insertar el valor del producto</button>
                 </div>
                 <div id="get-iva" class="calculator-section">
-                    <p id="total__p">Calcular el valor de IVA para un producto o subtotal</p>
-                    <p>Para un valor de: <i class="script" id="calculation1"></i></p>
-                    <p>Se establece un valor de IVA de: <i class="script" id="calculation2"></i></p>
+                    <p class="calculator-title">Calcular el valor de IVA para un producto o subtotal</p>
+                    <p class="calculator-parameter">Para un valor de: <i class="script" id="calculation1"></i></p>
+                    <p class="calculator-parameter">Se establece un valor de IVA de: <i class="script" id="calculation2"></i></p>
                     <button class="script-button" onclick="calculateIVA()">Tocá para insertar el valor del producto o total</button>
                     <script>
-                        const calculationElements = [document.getElementById('calculation1'), document.getElementById('calculation2')];
-                        function calculateIVA() {
-                            let total = prompt('Inserta el valor del producto o el total: ');
-                            if (total > 0 && total != null) {
-                                let valueOfIVA = Math.round((parseInt(total) * 1.21) - total);
-                                calculationElements[0].innerText = `${parseInt(total)}`;
-                                calculationElements[1].innerText = `${valueOfIVA}`;
-                            }
-                        };
+                        const calculationElements=[document.getElementById('calculation1'),document.getElementById('calculation2')];function calculateIVA(){let total=prompt('Inserta el valor del producto o el total: ');if(total>0&&total!=null){let valueOfIVA=Math.round((parseInt(total)*1.21)-total);calculationElements[0].innerText=`$${parseInt(total)}`;calculationElements[1].innerText=`$${ valueOfIVA }`}};
                     </script>
                 </div>
             </div>
@@ -115,13 +94,33 @@
                 }
             }
             </script>
-            <div id="about">
-                <div id="summary">
+            <span id="about"></span>
+            <p class="section-title">Acerca de</p>
+            <div id="about-container">
+                <div class="about-section" id="summary">
                     <h1>Calculadora de IVA</h1>
-                    <p>Esta calculadora tiene el fin de agilizar y ayudar a conocer los valores del IVA en un total facturado o en un producto cuyo valor del IVA está incluido en el precio.</p>
+                    <p>Esta calculadora tiene el fin de agilizar y ayudar a conocer los valores del IVA en diferentes situaciones.</p>
+                </div>
+                <div class="about-section" id="how-to">
+                    <h3>¿Cómo funciona?</h3>
+                    <p>Al utilizar cualquiera de las opciones ofrecidas, se ejecutarán cálculos internos que determinarán los diferentes valores requeridos.</p>
                 </div>
             </div>
-            <div class="credits"></div>
+            <p class="section-title">Créditos</p>
+            <div id="credits" class="credits">
+                <div id="logo">
+                    <img id="ti7oyan-logo" src="https://avatars.githubusercontent.com/u/74388638?v=4" alt="Ti7oyan's logo">
+                </div>
+                <div id="credits-information">
+                    <p id="credits-name">Ticiano</p>
+                    <p id="socials-title">Encuéntrame en:</p>
+                    <ul id="socials-table">
+                        <li class="socials-link"><a href="https://instagram.com/ti7oyan" target="__blank"><img class="socials-image" src="assets/instagram.png" alt="Instagram's logo"></a></li>
+                        <li class="socials-link"><a href="https://github.com/Ti7oyan" target="__blank"><img class="socials-image" src="assets/github.png" alt="Github's logo"></a></li>
+                        <li class="socials-link"><a href="https://ti7oyan.github.io/" target="__blank"><img class="socials-image" src="assets/globe.png" alt="Globe icon"></a></li>
+                    </ul>
+                </div>
+            </div>
         </main>
     </body>
 </html>
